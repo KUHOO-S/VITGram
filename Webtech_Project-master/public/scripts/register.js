@@ -27,7 +27,7 @@ function fnameValid(fname){
 	else {
 		alert('Name must have alphabet characters only');
 		fname.focus();
-		return false; 
+		return false;
 	}
 }
 
@@ -40,7 +40,7 @@ function lnameValid(lname){
 	else {
 		alert('Name must have alphabet characters only');
 		lname.focus();
-		return false; 
+		return false;
 	}
 }
 
