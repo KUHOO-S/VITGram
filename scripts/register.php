@@ -7,7 +7,7 @@
 static $numofusers=0;  // variable to check first registration
 if ($numofusers==0)
 {
-$conn=mysqli_connect("localhost","root","");
+$conn=mysqli_connect("localhost","kuhooadmin","abc123",);
 if(!$conn)
 {
     die("Could not connect");
@@ -16,9 +16,15 @@ else{
     echo "Connected successfully";
 }
 
+if (mysqli_query($conn, "CREATE DATABASE OSPdb"))
+{
+    echo "db created successfully";
+} else {
+    echo 'Error creating database: " . mysqli_error($conn)';
+}
 mysqli_close($conn);
 
-$conn=mysqli_connect("localhost","root","","OSPdb");
+$conn=mysqli_connect("localhost","kuhooadmin","abc123","OSPdb");
 if(!$conn)
 {
     die("Could not connect");
@@ -29,7 +35,7 @@ else{
 
 
 $sql="CREATE TABLE Users (
-        id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+        id INT(6) UNSIGNED PRIMARY KEY,
         firstname VARCHAR(30) NOT NULL,
         lastname VARCHAR(30) NOT NULL,
         email VARCHAR(50),
@@ -42,9 +48,9 @@ $sql="CREATE TABLE Users (
 
 if (mysqli_query($conn, $sql))
 {
-    echo'<script>console.log( "Table created successfully")</script>';
+    echo"Table created successfully";
 } else {
-    echo '<script>console.log("Error creating database: " . mysqli_error($conn))</script>';
+    echo "Error creating database: " . mysqli_error($conn);
 }
 mysqli_close($conn);
 
@@ -123,28 +129,4 @@ function cpswdValid($cpswd,$pswd){
 	}
 }
 
-
-
-  if(isset($_POST['register']))
-  {
-    $db=mysqli_connect("localhost","root","","OSPdb");
-
-   $fname=$_POST['fname'];
-   $lname=$_POST['lname'];
-   $email=$_POST['email'];
-   $username=$_POST['username'];
-   $password=$_POST['password'];
-
-   if (mysqli_query($conn,"INSERT INTO Users
-    (username,fname,lname,password)
-    VALUES ($numofusers,'$fname','$lname','$email','$username',$password')"))
-    {print "<script>console.log('Account created :)');</script>";
-        echo"jkfhjsdhgkkjfg";
-    }
-
-	else {
-		echo '<script>console.log("Error user not added to db")</script>';
-	}
-  }
-$numofusers++;
 ?>
