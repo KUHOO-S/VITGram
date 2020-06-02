@@ -3,6 +3,25 @@
 <head>
     <title>VITgram | Home</title>
     <link rel="stylesheet" type="text/css" href="/stylesheets/home.css">
+    <style>
+        #container {
+        	padding-top:20px;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+        }
+        h1 {
+        	padding-top: 50px;
+            text-align: center;
+            border-bottom;: 1px solid #cccccc;
+            width: 50%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+    </style>
 </head>
 
 <body>
@@ -56,9 +75,25 @@
                                 </form>
                             </div>
                         </div>
-                </div>        
+                </div>
             </div>
         <%})%>
     </div>
+
+
+
+    <h1>Add a new post</h1>
+    <hr style="color: #cccccc; width:50%;">
+    <div id="container">
+        <form action="/new" method="GET" enctype="multipart/form-data">
+            <input type="file" name="post" id="post">
+            <br>
+            <br>
+            <input id="submit" type="submit" value="Upload">
+        </form>
+    </div>
+
+
+
 </body>
 </html>
